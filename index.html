@@ -4,29 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <div id="display">Enter A Number!</div>
+    <div id="calculator-flex">
+      <div id="calculator-grid">
+        <input id="display-value" placeholder="Enter A Number" />
+        <button data-clear="clear">C</button>
 
-    <input type="button" value="+" />
-    <input type="button" value="-" />
-    <input type="button" value="*" />
-    <input type="button" value="/" />
-    <input type="button" value="=" />
+        <button data-number="7">7</button>
+        <button data-number="8">8</button>
+        <button data-number="9">9</button>
 
-    <input class="numPads" type="button" value="0" />
-    <input class="numPads" type="button" value="1" />
-    <input class="numPads" type="button" value="2" />
-    <input class="numPads" type="button" value="3" />
-    <input class="numPads" type="button" value="4" />
-    <input class="numPads" type="button" value="5" />
-    <input class="numPads" type="button" value="6" />
-    <input class="numPads" type="button" value="7" />
-    <input class="numPads" type="button" value="8" />
-    <input class="numPads" type="button" value="9" />
+        <button data-operation="divide">/</button>
 
-    <input type="button" value="C" />
+        <button data-number="4">4</button>
+        <button data-number="5">5</button>
+        <button data-number="6">6</button>
+
+        <button data-operation="multiply">*</button>
+
+        <button data-number="1">1</button>
+        <button data-number="2">2</button>
+        <button data-number="3">3</button>
+
+        <button data-operation="subtract">-</button>
+
+        <button id="num0" data-number="0">0</button>
+
+        <button data-equals="equals">=</button>
+
+        <button data-operation="add">+</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

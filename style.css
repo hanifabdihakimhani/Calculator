@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#calculator-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 250px;
+  width: 250px;
+}
+
+#calculator-grid input {
+  grid-column-start: span 3;
+}
+
+#calculator-grid #num0 {
+  grid-column-start: span 2;
+}
