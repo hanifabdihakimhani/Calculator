@@ -3,23 +3,46 @@ const operatorButton = document.querySelectorAll('[data-operation]');
 const display = document.getElementById('display-value');
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('[data-clear]');
-let result = "";
+let numbers = [];
 
-function add(a, b) { return a + b };
-function subtract(a, b) { return a - b };
-function multiply(a, b) { return a * b };
-function divide(a, b) { return a / b };
+function add(numbers) {
+    let num = numbers.reduce((acc, currentValue) => {
+        return acc + currentValue;
+    });
+    return num;
+};
 
-function operate(operator, a, b) {
+function subtract(numbers) {
+    let num = numbers.reduce((acc, currentValue) => {
+        return acc - currentValue;
+    })
+    return num;
+};
+
+function multiply(numbers) {
+    let num = numbers.reduce((acc, currentValue) => {
+        return acc * currentValue;
+    })
+    return num;
+};
+
+function divide(numbers) {
+    let num = numbers.reduce((acc, currentValue) => {
+        return acc / currentValue;
+    })
+    return num;
+};
+
+function operate(operator, numbers) {
     switch (operator) {
         case '+':
-            return add(a, b);
+            return add(numbers);
         case '-':
-            return subtract(a, b);
+            return subtract(numbers);
         case '*':
-            return multiply(a, b);
+            return multiply(numbers);
         case '/':
-            return divide(a, b);
+            return divide(numbers);
     }
 }
 
@@ -34,22 +57,24 @@ function clearDisplay() {
 numButton.forEach(button => {
     button.addEventListener('click', function (e) {
         number = e.target.dataset.number;
-        result += number;
-        display.value = result;
+        numbers += number;
+        display.value = numbers;
     })
 })
 
 operatorButton.forEach(button => {
     button.addEventListener('click', function (e) {
         operator = e.target.dataset.operation;
+        numbers += operator;
+        display.value = numbers;
     })
 })
 
 equalsButton.addEventListener('click', function (e) {
-    result = operate(operator, a, b);
+    numbers = operate(operator, a, b);
 })
 
 clearButton.addEventListener('click', function () {
-    result = "";
-    display.value = result;
+    numbers = "";
+    display.value = numbers;
 })
