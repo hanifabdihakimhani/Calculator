@@ -4,6 +4,8 @@ const display = document.getElementById('display-value');
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('[data-clear]');
 let numbers = [];
+let operator;
+let currentInput = "";
 
 function add(numbers) {
     let num = numbers.reduce((acc, currentValue) => {
@@ -33,48 +35,54 @@ function divide(numbers) {
     return num;
 };
 
-function operate(operator, numbers) {
+function operate(operator) {
+    let result = numbers[0];
     switch (operator) {
         case '+':
-            return add(numbers);
+            result = add(numbers);
+            break;
         case '-':
-            return subtract(numbers);
+            result = subtract(numbers);
+            break;
         case '*':
-            return multiply(numbers);
+            result = multiply(numbers);
+            break;
         case '/':
-            return divide(numbers);
+            result = divide(numbers);
+            break;
     }
-}
-
-function updateDisplay() {
-}
-
-function clearDisplay() {
-
+    return result;
 }
 
 
 numButton.forEach(button => {
     button.addEventListener('click', function (e) {
-        number = e.target.dataset.number;
-        numbers += number;
-        display.value = numbers;
+        currentInput += e.target.dataset.number;
+        display.value = currentInput;
     })
 })
 
 operatorButton.forEach(button => {
     button.addEventListener('click', function (e) {
         operator = e.target.dataset.operation;
-        numbers += operator;
-        display.value = numbers;
+        numbers.push(parseFloat(currentInput));
+        currentInput = "";
+        display.value = operator;
     })
 })
 
 equalsButton.addEventListener('click', function (e) {
-    numbers = operate(operator, a, b);
+    numbers.push(parseFloat(currentInput));
+    let result = operate(operator);
+    display.value = result;
+    currentInput = "";
+    numbers = [result];
+    operator = "";
 })
 
 clearButton.addEventListener('click', function () {
-    numbers = "";
-    display.value = numbers;
+    display.value = "";
+    numbers = [];
+    operator = "";
+    currentInput = "";
 })
